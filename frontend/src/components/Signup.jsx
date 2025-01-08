@@ -16,7 +16,7 @@ const Signup = () => {
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/user/signup`, { userName, email, password }, { withCredentials: true, headers: { "Content-Type": "application/json" } })
             console.log(data);
-            localStorage.setItem("jwt", data.token);
+            localStorage.setItem("jwt", data?.token);
             setUserName("");
             setEmail("");
             setPassword("");
@@ -24,7 +24,7 @@ const Signup = () => {
             toast.success("User Register Successfully");
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.errors || "User registeration failed")
+            toast.error(error?.response?.data?.errors || "User registeration failed")
         }
 
     }
@@ -43,7 +43,7 @@ const Signup = () => {
                                     className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     type="text"
                                     value={userName}
-                                    onChange={(e) => setUserName(e.target.value)}
+                                    onChange={(e) => setUserName(e?.target?.value)}
                                     placeholder="Type Username"
                                 />
                             </div>
@@ -55,7 +55,7 @@ const Signup = () => {
                                     className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     type="text"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => setEmail(e?.target?.value)}
                                     placeholder="Type Email"
                                 />
                             </div>
@@ -68,7 +68,7 @@ const Signup = () => {
                                     className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => setPassword(e?.target?.value)}
                                     placeholder="Type Username"
                                 />
                             </div>

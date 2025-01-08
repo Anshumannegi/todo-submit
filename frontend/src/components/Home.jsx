@@ -24,8 +24,8 @@ const Home = () => {
                     withCredentials: true,
                     headers: { "Content-Type": "application/json" },
                 });
-                console.log(response.data.todos);
-                setTodos(response.data.todos);
+                console.log(response?.data?.todos);
+                setTodos(response?.data?.todos);
                 setError(null);
             } catch (error) {
                 setError("Failed to Fetch");
@@ -45,7 +45,7 @@ const Home = () => {
                 { text: newTodo, completed: false },
                 { withCredentials: true }
             );
-            setTodos([...todos, response.data.newTodo]);
+            setTodos([...todos, response?.data?.newTodo]);
             setNewTodo("");
         } catch (error) {
             setError("Failed to create Task");
@@ -53,20 +53,20 @@ const Home = () => {
     };
 
     const todoStatus = async (id) => {
-        const todo = todos.find((t) => t._id === id);
+        const todo = todos?.find((t) => t?._id === id);
         try {
             const response = await axios.put(
                 `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/todo/update/${id}`,
                 {
                     ...todo,
-                    completed: !todo.completed,
+                    completed: !todo?.completed,
                 },
                 {
                     withCredentials: true,
                 }
             );
             // console.log(response.data.todo);
-            setTodos(todos.map((t) => (t._id === id ? response.data.todo : t)));
+            setTodos(todos?.map((t) => (t._id === id ? response?.data?.todo : t)));
         } catch (error) {
             setError("Failed to find Task status");
         }
@@ -77,7 +77,7 @@ const Home = () => {
             await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/todo/delete/${id}`, {
                 withCredentials: true,
             });
-            setTodos(todos.filter((t) => t._id !== id));
+            setTodos(todos.filter((t) => t?._id !== id));
         } catch (error) {
             setError("Failed to Delete Task");
         }
@@ -85,7 +85,7 @@ const Home = () => {
 
     const handleEditClick = (task) => {
         setSelectedTask(task);
-        setUpdatedText(task.text);
+        setUpdatedText(task?.text);
         setIsModalOpen(true);
     };
 
@@ -93,7 +93,7 @@ const Home = () => {
         try {
             await axios.put(
                 `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/todo/edit/${id}`,
-                { text: updatedText, completed: selectedTask.completed },
+                { text: updatedText, completed: selectedTask?.completed },
                 {
                     withCredentials: true,
                 },
@@ -109,13 +109,13 @@ const Home = () => {
 
             setTodos((prevTodos) =>
                 prevTodos.map((todo) =>
-                    todo._id === id ? { ...todo, text: updatedText } : todo
+                    todo?._id === id ? { ...todo, text: updatedText } : todo
                 )
             );
         } catch (error) {
             console.error(
                 "Failed to update task:",
-                error.response?.data || error.message
+                error?.response?.data || error?.message
             );
             alert("Failed to update task.");
         }
@@ -142,7 +142,7 @@ const Home = () => {
                     type="text"
                     placeholder="Add the Task"
                     value={newTodo}
-                    onChange={(e) => setNewTodo(e.target.value)}
+                    onChange={(e) => setNewTodo(e?.target?.value)}
                     className="flex-grow p-2 border rounded-l-md focus:outline-none"
                 />
                 <button
@@ -160,25 +160,25 @@ const Home = () => {
                 <div className="text-center text-red-600 font-semibold">{error}</div>
             ) : (
                 <ul className="space-y-2">
-                    {todos.map((todo) => (
+                    {todos?.map((todo) => (
                         <li
                             className="flex items-center justify-between p-3 bg-gray-100 rounded-md"
-                            key={todo._id}
+                            key={todo?._id}
                         >
                             <div className="flex items-center">
                                 <input
                                     type="checkbox"
-                                    checked={todo.completed}
-                                    onChange={() => todoStatus(todo._id)}
+                                    checked={todo?.completed}
+                                    onChange={() => todoStatus(todo?._id)}
                                     className="mr-2"
                                 />
                                 <span
-                                    className={`${todo.completed
+                                    className={`${todo?.completed
                                         ? "line-through text-gray-800 font-semibold"
                                         : ""
                                         } `}
                                 >
-                                    {todo.text}
+                                    {todo?.text}
                                 </span>
                             </div>
 
@@ -190,7 +190,7 @@ const Home = () => {
                             </button>
 
                             <button
-                                onClick={() => todoDelete(todo._id)}
+                                onClick={() => todoDelete(todo?._id)}
                                 className="text-red-500 hover:text-red-800 duration-300"
                             >
                                 Delete
@@ -207,7 +207,7 @@ const Home = () => {
                         <input
                             type="text"
                             value={updatedText}
-                            onChange={(e) => setUpdatedText(e.target.value)}
+                            onChange={(e) => setUpdatedText(e?.target?.value)}
                             className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
                         />
                         <div className="mt-4 flex justify-end space-x-2">
@@ -218,7 +218,7 @@ const Home = () => {
                                 Cancel
                             </button>
                             <button
-                                onClick={() => handleUpdateTask(selectedTask._id)}
+                                onClick={() => handleUpdateTask(selectedTask?._id)}
                                 className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
                             >
                                 Save

@@ -28,13 +28,13 @@ const Login = () => {
       );
       console.log(data);
       localStorage.setItem("jwt", data?.user?.token);
-      toast.success(data.message || "User logged In successfully");
+      toast.success(data?.message || "User logged In successfully");
       navigate("/");
       setEmail("");
       setPassword("");
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.errors || "User Logged In failed");
+      toast.error(error?.response?.data?.errors || "User Logged In failed");
     }
   };
 
@@ -53,7 +53,7 @@ const Login = () => {
                   className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   type="text"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e?.target?.value)}
                   placeholder="Type Email"
                 />
               </div>
@@ -65,7 +65,7 @@ const Login = () => {
                   className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e?.target?.value)}
                   placeholder="Type Username"
                 />
               </div>
