@@ -29,7 +29,7 @@ const Login = () => {
       console.log(data);
       localStorage.setItem("jwt", data?.user?.token);
       toast.success(data?.message || "User logged In successfully");
-      navigate("/");
+      navigate("/taskmanager");
       setEmail("");
       setPassword("");
     } catch (error) {

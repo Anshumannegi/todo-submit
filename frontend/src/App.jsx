@@ -6,6 +6,8 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import PageNotFound from "./components/PageNotFound";
 import { Toaster } from 'react-hot-toast';
+import Header from "./components/Header";
+import TaskManager from "./components/TaskManager";
 
 
 const App = () => {
@@ -14,12 +16,12 @@ const App = () => {
 
   return (
     <div>
+      <Header />
       <Routes>
-        <Route
-          path="/"
-          element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/taskmanager" element={<TaskManager />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Toaster />
