@@ -137,17 +137,17 @@ const TaskManager = () => {
     return (
         <div className="my-10 bg-gray-100 max-w-lg lg:max-w-xl rounded-lg shadow-lg mx-8 sm:mx-auto p-6">
             <h1 className="text-2xl font-semibold text-center">Todo App</h1>
-            <div className="flex mb-4">
+            <div className="flex flex-col sm:flex-row mb-4">
                 <input
                     type="text"
                     placeholder="Add the Task"
                     value={newTodo}
                     onChange={(e) => setNewTodo(e?.target?.value)}
-                    className="flex-grow p-2 border rounded-l-md focus:outline-none"
+                    className="flex-grow p-2 border  rounded-t-md sm:rounded-l-md sm:rounded-tr-none focus:outline-none"
                 />
                 <button
                     onClick={todoCreate}
-                    className="bg-blue-600 border rounded-r-md text-white py-2 px-4 hover:bg-blue-900 duration-300"
+                    className="bg-blue-600 border rounded-b-md sm:rounded-r-md sm:rounded-bl-none text-white py-2 px-4 hover:bg-blue-900 duration-300"
                 >
                     Add
                 </button>
