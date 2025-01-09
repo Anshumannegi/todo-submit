@@ -1,4 +1,5 @@
 Todo App
+vercel Link -: https://todo-submit-3oqh.vercel.app
 Overview
 The Todo App is a full-stack web application designed to help users manage their tasks effectively. Users can create, edit, delete, and toggle the completion status of their tasks. The app also includes user authentication to ensure secure access to the tasks.
 Features
@@ -34,7 +35,7 @@ Steps
 8.	PORT=4001
 9.	MONGODB_URI=your_mongodb_connection_string
 10.	JWT_SECRET_KEY=your_secret_key
-11.	FRONTEND_URL=http://localhost:3000
+11.	FRONTEND_URL=http://localhost:5173
 12.	Start the backend server: 
 13.	npm start
 14.	Install dependencies for the frontend: 
