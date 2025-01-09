@@ -1,5 +1,4 @@
 Todo App
-vercel Link -: https://todo-submit-3oqh.vercel.app
 Overview
 The Todo App is a full-stack web application designed to help users manage their tasks effectively. Users can create, edit, delete, and toggle the completion status of their tasks. The app also includes user authentication to ensure secure access to the tasks.
 Features
